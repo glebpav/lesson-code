@@ -43,6 +43,10 @@ public class TextButton {
         bitmapFont.draw(spriteBatch, text, textX, textY);
     }
 
+    public boolean isHit(float tx, float ty) {
+        return tx >= x && tx <= x + texture.getWidth() && ty >= y && ty <= y + texture.getHeight();
+    }
+
     public void dispose() {
         texture.dispose();
         bitmapFont.dispose();

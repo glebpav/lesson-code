@@ -24,7 +24,7 @@ public class ScreenGame implements Screen {
 
     public ScreenGame(MyGdxGame myGdxGame) {
         this.myGdxGame = myGdxGame;
-        bird = new Bird(300, myGdxGame.SCR_HEIGHT / 2, 100, 100, 5);
+        bird = new Bird(300,GameSettings.SCR_HEIGHT / 2, 100, 100, 5);
         pointCounter = new PointCounter(700, 600);
         movingBackground = new MovingBackground("backgrounds/game_bg.png");
         // initTubes();
@@ -34,7 +34,7 @@ public class ScreenGame implements Screen {
 
     @Override
     public void show() {
-        isGameOver = false;
+        resetGame();
     }
 
     @Override
@@ -50,12 +50,10 @@ public class ScreenGame implements Screen {
         for(Tube tube : tubes) {
             tube.move();
             if (tube.isHit(bird)) {
-                System.out.println("loose");
                 isGameOver = true;
                 // resetGame();
                 myGdxGame.screenRestart.score = score;
                 myGdxGame.setScreen(myGdxGame.screenRestart);
-
             }
             if (tube.isPassed(bird)) {
                 score += 1; // score++;
@@ -77,7 +75,7 @@ public class ScreenGame implements Screen {
 
     void resetGame() {
         initTubes();
-        bird.y = MyGdxGame.SCR_HEIGHT / 2;
+        bird.y =GameSettings.SCR_HEIGHT / 2;
         isGameOver = false;
         score = 0;
     }

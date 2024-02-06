@@ -2,6 +2,7 @@ package ru.samsung.gamestudio.characters;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import ru.samsung.gamestudio.GameSettings;
 import ru.samsung.gamestudio.MyGdxGame;
 import ru.samsung.gamestudio.characters.Bird;
 
@@ -29,9 +30,9 @@ public class Tube {
     public Tube(int tubeCount, int tubeIdx) {
         random = new Random();
 
-        gapY = gapHeight / 2 + padding + random.nextInt(MyGdxGame.SCR_HEIGHT - 2 * (gapHeight / 2 + padding));
-        distanceBetweenTubes = (MyGdxGame.SCR_WIDTH + width) / (tubeCount - 1);
-        x = distanceBetweenTubes * tubeIdx + MyGdxGame.SCR_WIDTH;
+        gapY = gapHeight / 2 + padding + random.nextInt(GameSettings.SCR_HEIGHT - 2 * (gapHeight / 2 + padding));
+        distanceBetweenTubes = (GameSettings.SCR_WIDTH + width) / (tubeCount - 1);
+        x = distanceBetweenTubes * tubeIdx + GameSettings.SCR_WIDTH;
 
         textureDownTube = new Texture("tubes/tube.png");
         textureUpperTube = new Texture("tubes/tube_flipped.png");
